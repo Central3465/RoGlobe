@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>RoGlobe</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <main class="rg-popup">
+            <header class="rg-head">
+                <img src="../../icons/icon-48.png" alt="" width="32" height="32" />
+                <div>
+                    <h1>RoGlobe</h1>
+                    <p class="rg-tag">Your Roblox. Your region.</p>
+                </div>
+            </header>
+
+            <section class="rg-current" aria-live="polite">
+                <span class="rg-current-label">Current filter</span>
+                <strong id="current">Loading…</strong>
+            </section>
+
+            <fieldset class="rg-modes">
+                <legend>Filter mode</legend>
+                <label><input type="radio" name="mode" value="off" /> <span>Off <small>normal Roblox list</small></span></label>
+                <label><input type="radio" name="mode" value="closest" /> <span>Closest to me <small>Roblox's latency sort</small></span></label>
+                <label><input type="radio" name="mode" value="region" /> <span>Pick a region <small>checks server IPs</small></span></label>
+            </fieldset>
+
+            <label class="rg-region" for="region">
+                <span>Region</span>
+                <select id="region"></select>
+            </label>
+
+            <p class="rg-hint">Open a Roblox game page and use the RoGlobe panel above the server list to find servers.</p>
+
+            <footer class="rg-foot">
+                <p>No tracking. No accounts. Settings stay in this browser.</p>
+                <p id="data-version"></p>
+            </footer>
+        </main>
+        <script src="../shared/ip.js"></script>
+        <script src="../shared/datacenters.js"></script>
+        <script src="../shared/regions.js"></script>
+        <script src="../shared/settings.js"></script>
+        <script src="popup.js"></script>
+    </body>
+</html>

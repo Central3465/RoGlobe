@@ -1,0 +1,341 @@
+/* RoGlobe panel. Every selector is scoped under .roglobe so Roblox's page styles stay untouched. */
+.roglobe {
+    --rg-bg: #ffffff;
+    --rg-surface: #f4f6fb;
+    --rg-border: #dfe3ee;
+    --rg-text: #161a23;
+    --rg-muted: #5b6475;
+    --rg-accent-1: #14b8a6;
+    --rg-accent-2: #6366f1;
+    --rg-accent-text: #ffffff;
+    --rg-danger: #c2410c;
+    --rg-ok: #0f766e;
+    --rg-focus: #6366f1;
+
+    position: relative;
+    margin: 0 0 16px;
+    padding: 16px 18px;
+    border: 1px solid var(--rg-border);
+    border-radius: 14px;
+    background: var(--rg-bg);
+    color: var(--rg-text);
+    font: 14px/1.45 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(30 41 80 / 0.18);
+    overflow: hidden;
+}
+.roglobe::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rg-accent-1), var(--rg-accent-2));
+}
+.roglobe.rg-dark {
+    --rg-bg: #191b22;
+    --rg-surface: #22252e;
+    --rg-border: #323644;
+    --rg-text: #eef0f6;
+    --rg-muted: #a3aabb;
+    --rg-danger: #fb923c;
+    --rg-ok: #5eead4;
+    --rg-focus: #a5b4fc;
+    box-shadow: 0 8px 24px -12px rgb(0 0 0 / 0.6);
+}
+.roglobe *,
+.roglobe *::before,
+.roglobe *::after {
+    box-sizing: border-box;
+}
+.roglobe [hidden] {
+    display: none !important;
+}
+
+/* Header */
+.roglobe .rg-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.roglobe .rg-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.roglobe .rg-logo {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--rg-accent-1), var(--rg-accent-2));
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    flex: none;
+}
+.roglobe .rg-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--rg-text);
+}
+.roglobe .rg-tagline {
+    margin: 0;
+    font-size: 12px;
+    color: var(--rg-muted);
+}
+.roglobe .rg-pill {
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--rg-border);
+    background: var(--rg-surface);
+    color: var(--rg-muted);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.roglobe .rg-pill.rg-pill-on {
+    border-color: transparent;
+    background: linear-gradient(90deg, var(--rg-accent-1), var(--rg-accent-2));
+    color: var(--rg-accent-text);
+}
+
+/* Controls */
+.roglobe .rg-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px;
+    margin-top: 14px;
+}
+.roglobe .rg-modes {
+    display: inline-flex;
+    padding: 3px;
+    border-radius: 10px;
+    background: var(--rg-surface);
+    border: 1px solid var(--rg-border);
+}
+.roglobe .rg-mode {
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+}
+.roglobe .rg-mode input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+.roglobe .rg-mode span {
+    display: block;
+    padding: 6px 12px;
+    border-radius: 7px;
+    color: var(--rg-muted);
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.15s, color 0.15s;
+}
+.roglobe .rg-mode input:checked + span {
+    background: var(--rg-bg);
+    color: var(--rg-text);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.12);
+}
+.roglobe .rg-mode input:focus-visible + span {
+    outline: 2px solid var(--rg-focus);
+    outline-offset: 1px;
+}
+.roglobe .rg-mode input:disabled + span {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.roglobe .rg-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 220px;
+}
+.roglobe .rg-label {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--rg-muted);
+}
+.roglobe .rg-select {
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid var(--rg-border);
+    background: var(--rg-surface);
+    color: var(--rg-text);
+    font: inherit;
+}
+.roglobe .rg-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Buttons */
+.roglobe .rg-btn {
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid var(--rg-border);
+    background: var(--rg-surface);
+    color: var(--rg-text);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, filter 0.15s, opacity 0.15s;
+}
+.roglobe .rg-btn:hover:not(:disabled) {
+    filter: brightness(0.97);
+}
+.roglobe .rg-btn:active:not(:disabled) {
+    transform: translateY(1px);
+}
+.roglobe .rg-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.roglobe .rg-btn:focus-visible,
+.roglobe .rg-select:focus-visible {
+    outline: 2px solid var(--rg-focus);
+    outline-offset: 2px;
+}
+.roglobe .rg-btn-primary,
+.roglobe .rg-btn-join {
+    border-color: transparent;
+    background: linear-gradient(90deg, var(--rg-accent-1), var(--rg-accent-2));
+    color: var(--rg-accent-text);
+}
+.roglobe .rg-btn-primary:hover:not(:disabled),
+.roglobe .rg-btn-join:hover:not(:disabled) {
+    filter: brightness(1.08);
+}
+.roglobe .rg-btn-ghost {
+    background: transparent;
+}
+
+/* Status */
+.roglobe .rg-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--rg-muted);
+}
+.roglobe .rg-status:empty {
+    display: none;
+}
+.roglobe .rg-status-error {
+    color: var(--rg-danger);
+}
+.roglobe .rg-status-done {
+    color: var(--rg-ok);
+}
+.roglobe .rg-spinner {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--rg-border);
+    border-top-color: var(--rg-accent-2);
+    animation: rg-spin 0.8s linear infinite;
+    flex: none;
+}
+@keyframes rg-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Results */
+.roglobe .rg-results {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 6px;
+}
+.roglobe .rg-results:empty {
+    display: none;
+}
+.roglobe .rg-server {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 10px 8px 12px;
+    border-radius: 10px;
+    background: var(--rg-surface);
+    border: 1px solid var(--rg-border);
+}
+.roglobe .rg-server-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+.roglobe .rg-loc {
+    font-weight: 600;
+}
+.roglobe .rg-loc-unknown {
+    color: var(--rg-muted);
+    font-weight: 500;
+    font-style: italic;
+}
+.roglobe .rg-players {
+    color: var(--rg-muted);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+.roglobe .rg-bar {
+    width: 80px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--rg-border);
+    overflow: hidden;
+}
+.roglobe .rg-bar > span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--rg-accent-1), var(--rg-accent-2));
+}
+.roglobe .rg-footer {
+    margin-top: 8px;
+}
+.roglobe .rg-footer:not(:has(:not([hidden]))) {
+    display: none;
+}
+.roglobe .rg-note {
+    margin: 12px 0 0;
+    font-size: 11px;
+    color: var(--rg-muted);
+}
+
+/* Filter off: compact, unobtrusive bar */
+.roglobe.rg-off {
+    padding-block: 12px;
+}
+.roglobe.rg-off .rg-note,
+.roglobe.rg-off .rg-status,
+.roglobe.rg-off .rg-results {
+    display: none;
+}
+.roglobe .rg-controls.rg-compact {
+    margin-top: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .roglobe .rg-spinner {
+        animation-duration: 2s;
+    }
+    .roglobe .rg-btn,
+    .roglobe .rg-mode span {
+        transition: none;
+    }
+}
