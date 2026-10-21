@@ -10,7 +10,7 @@ It adds one panel above the server list on Roblox game pages, plus a toolbar pop
 - **Pick a region**: when you click **Find servers**, RoGlobe checks up to 100 servers, one at a time, and shows the ones
   whose IP falls in that region's known ranges. Click **Join** to join through Roblox's normal launcher.
 
-Not affiliated with Roblox Corporation or with RoValra.
+Not affiliated with Roblox Corporation.
 
 ## How location is determined (and how reliable it is)
 
@@ -29,9 +29,9 @@ Servers whose IP isn't in the table are shown as **unknown**, never guessed.
 - Cookies/tokens are never read or stored by RoGlobe. Settings (`mode`, `regionId`) stay in `chrome.storage.local`.
 - Permissions: `storage` only. Runs only on `https://www.roblox.com/games/…` pages.
 
-Details: [docs/security-review.md](docs/security-review.md) (a self-review, **not** an independent audit).
-
 ## Install (unpacked)
+
+Unfortunately and being fully transparent, this extension won't realistically perform well, hence the $5 fee for Chrome Developer Web Store is not justifiable, however I may revisit this in the future including Microsoft Edge and Firefox. In the meantime, you would have to download git, clone the repository and then unpack it in the extensions page with developer mode toggled on. To make this easier for you, I do plan on creating a one-click installer release zip file soon. 
 
 1. Download or clone this repository.
 2. **Chrome:** open `chrome://extensions` · **Edge:** open `edge://extensions`.
@@ -41,32 +41,9 @@ Details: [docs/security-review.md](docs/security-review.md) (a self-review, **no
 
 Requires Chrome/Edge 116 or newer.
 
-### Inspect what it can do
-
-- On the extensions page, click **Details** on RoGlobe. "Site access" should list only `www.roblox.com`
-  and there should be no other permissions besides storage (Chrome may not show storage at all, since it needs no warning).
-- Read `manifest.json`. It's 50 lines.
-- **Network check:** open a Roblox game page, press F12 → **Network**, use RoGlobe, and confirm requests only go to
-  `games.roblox.com` and `gamejoin.roblox.com`.
-- **Storage check:** open the RoGlobe popup, right-click inside it → **Inspect**, then in the DevTools
-  console run `chrome.storage.local.get(null).then(console.log)`. You should see only `roglobeSettings`.
-
-## Manual test checklist (live Roblox)
-
-These couldn't be run by the author's environment. Please try them and report what you see:
-
-- [ ] Panel appears above "Servers" on a game page (e.g. `https://www.roblox.com/games/<id>`), and looks right in light and dark theme.
-- [ ] **Off**: no requests appear in DevTools → Network when you load the page.
-- [ ] **Closest to me** lists servers. If it shows an error, Roblox may no longer support the latency sort.
-- [ ] **Pick a region → Find servers**: the status counts climb; servers in that region appear with **Join**.
-      If every server is "unknown", the join response or IP table has likely changed (please report the region).
-- [ ] **Join** opens Roblox's usual launch dialog for that server.
-- [ ] Your choice is remembered after reloading the page and in the popup.
-- [ ] Signed out of Roblox: you get a "Sign in to Roblox" message, not a crash.
-
 ## Development
 
-No build step and no dependencies. The files you load are the files you read.
+No build step and no dependencies. required.
 
 ```
 npm test                       # unit + static security tests (Node 22+, built-in test runner)
@@ -90,4 +67,4 @@ inside Roblox's `128.116.0.0/17` block, and that none overlap).
 
 ## Licence
 
-GPL-3.0 (see `LICENSE`). The design was informed by reading RoValra (GPL-3.0), but no RoValra code, assets or services are used.
+GPL-3.0 (see `LICENSE`).
